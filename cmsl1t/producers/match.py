@@ -20,7 +20,7 @@ def get_matched_obj_index(obj, objects, deltaR=0.3):
 
 def get_matched_l1_jet(recoJet, l1Jets, deltaR=0.3):
     recoObj = (recoJet['eta'], recoJet['phi'])
-    l1Objects = [(j['jetEta'], j['jetPhi']) for j in l1Jets]
+    l1Objects = [(j['eta'], j['phi']) for j in l1Jets]
     index = get_matched_obj_index(recoObj, l1Objects, deltaR)
     if index < len(l1Jets):
         return l1Jets[index]

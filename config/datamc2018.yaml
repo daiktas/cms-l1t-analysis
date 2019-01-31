@@ -1,0 +1,89 @@
+version: 1
+name: 2018 Data
+
+input:
+  files:
+    # - data/L1Ntuple_*.root
+    - /eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/vcepaiti/SingleMuon/crab_SingleMuon_Run2018B_PromptReco_v1/180807_133043/0000/*.root
+
+  sample:
+    name: Data
+    title: 2018 Data
+  trigger:
+    name: SingleMu
+    title: Single Muon
+  pileup_file: ""
+  run_number: 276243
+
+analysis:
+  load_trees:
+    - event
+    - upgrade
+    - recoTree
+    - metFilterReco
+    - jetReco
+  do_fit: False
+  pu_type: 0PU999
+  pu_bins: 0, 999
+  analyzers:
+    data:
+      module: cmsl1t.analyzers.comparison_analyzer
+  producers:
+    l1Sums:
+      module: cmsl1t.producers.l1sums
+      inputs:
+        - L1Upgrade_sumBx
+        - L1Upgrade_sumType
+        - L1Upgrade_sumEt
+        - L1Upgrade_sumPhi
+      outputs:
+        - l1Sums
+      methods:
+        - default 
+
+    goodPFJets:
+      module: cmsl1t.producers.jets
+      inputs:
+        - Jet_et
+        - Jet_eta
+        - Jet_phi
+        - Jet_etCorr
+        - Jet_cemef
+        - Jet_chef
+        - Jet_cMult
+        - Jet_mef
+        - Jet_muMult
+        - Jet_nemef
+        - Jet_nhef
+        - Jet_nMult
+      jetType: PF
+      filter: cmsl1t.filters.jets.pfJetFilter
+      outputs:
+        - goodPFJets
+    caloJets:
+      module: cmsl1t.producers.jets
+      inputs:
+        - Jet_caloEt
+        - Jet_caloEta
+        - Jet_caloPhi
+        - Jet_caloEtCorr
+      jetType: Calo
+      filter: null
+      outputs:
+        - caloJets
+    l1Jets:
+      module: cmsl1t.producers.jets
+      inputs:
+        - L1Upgrade_jetEt
+        - L1Upgrade_jetEta
+        - L1Upgrade_jetPhi
+        - L1Upgrade_jetBx
+      jetType: L1
+      filter: null
+      outputs:
+        - l1Jets
+output:
+  # template is a list here that is joined (os.path.join) in the config parser
+  template:
+     - output/data
+     - "{date}_{sample_name}_{trigger_name}"
