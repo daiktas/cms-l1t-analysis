@@ -135,7 +135,7 @@ class EfficiencyPlot(BasePlotter):
                         fits.append(self.fits.get_bin_contents(
                             [pileup, threshold]))
                     labels.append(str(self.pileup_bins.bins[pileup]))
-                self.__make_overlay(pileup, threshold, hists,
+                    self.__make_overlay(pileup, threshold, hists,
                                     fits, labels, "PU bin")
 
         # Produce the fit summary plot
