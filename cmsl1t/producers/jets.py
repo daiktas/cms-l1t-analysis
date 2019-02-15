@@ -59,13 +59,15 @@ class Producer(BaseProducer):
     def produce(self, event):
         variables = [event[i] for i in self._inputs]
         jets = [self._jetClass(*args) for args in zip(*variables)]
+        if 'L1' in self._jetType:
+            jets = [jet for jet in jets if jet.bx == 0]
         if self._jetFilter:
             jets = self._jetFilter(jets)
 
         # sort by ET, largest first
         sorted_jets = sorted(
             jets,
-            key=lambda jet: jet.et,
+            key=lambda jet: jet.etCorr if jet.etCorr else jet.et,
             reverse=True,
         )
 

@@ -1,4 +1,6 @@
 from __future__ import print_function
+import pandas as pd
+
 from cmsl1t.plotting.base import BasePlotter
 from cmsl1t.hist.hist_collection import HistogramCollection
 import cmsl1t.hist.binning as bn
@@ -10,6 +12,7 @@ from rootpy.plotting import Legend
 
 
 class RateVsPileupPlot(BasePlotter):
+
     def __init__(self, online_name):
         name = ["rate_vs_pileup", online_name]
         super(RateVsPileupPlot, self).__init__("__".join(name))
@@ -156,3 +159,28 @@ class RateVsPileupPlot(BasePlotter):
         """
         self.plots += other.plots
         return self.plots
+
+    def get_stats(self, summary_bins=[], summary_label=''):
+        summary_columns = list(self._summary_columns(summary_bins, summary_label))
+        stats = list(self._collect_stats(summary_bins, summary_label))
+        df = pd.DataFrame(stats)
+        return df[['identifier', 'total', 'overflow'] + summary_columns]
+
+    def _summary_columns(self, summary_bins, summary_label):
+        for lower, upper in zip(summary_bins[:-1], summary_bins[1:]):
+            yield '{} {}-{}'.format(summary_label, lower, upper)
+
+    def _collect_stats(self, summary_bins, summary_label):
+        normalisation = self.plots.get_bin_contents([bn.Base.everything]).integral(overflow=True)
+        for (threshold, ), hist in self.plots.flat_items():
+            human_readable_threshold = '{0} > {1} GeV'.format(self.online_title, self.thresholds.bins[threshold])
+            rhist = hist.rebinned(summary_bins)
+            stats = {}
+            summary_columns = self._summary_columns(summary_bins, summary_label)
+            for summary_column, y in zip(summary_columns, rhist.y()):
+                stats[summary_column] = y * normalisation
+            total = sum(stats.values())
+            overflow = rhist.integral(overflow=True) * normalisation - total
+            header = dict(identifier=human_readable_threshold, total=total, overflow=overflow)
+            header.update(stats)
+            yield header

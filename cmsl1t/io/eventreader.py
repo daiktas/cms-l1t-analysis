@@ -59,9 +59,6 @@ class EventReader(object):
         self.input_files = _get_input_files(input_files)
         self.nevents = nevents
         self._trees = {}
-        for alias in self._aliasMap:
-            if 'vertex' in alias.lower():
-                print(alias)
 
         self._load_trees()
 

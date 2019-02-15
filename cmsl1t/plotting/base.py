@@ -102,3 +102,15 @@ class BasePlotter(object):
         Use self.save_canvas() to actually save the plot
         """
         raise NotImplementedError("draw() needs to be implemented")
+
+    def get_stats(self, summary_bins=[], summary_label=''):
+        """
+        Has to be overloaded by users code.
+
+        Return the statistics in each histogram on a canvas.
+        Should return a Dataframe
+
+        :param summary_bins bins to summarise the stats into
+        :param summary_label label to assign to summary columns
+        """
+        raise NotImplementedError("get_stats() needs to be implemented")

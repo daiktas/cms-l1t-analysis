@@ -13,6 +13,8 @@ from textwrap import dedent
 import logging
 import subprocess
 import pandas as pd
+from cmsl1t.utils.module import load_L1TNTupleLibrary
+load_L1TNTupleLibrary()
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
 

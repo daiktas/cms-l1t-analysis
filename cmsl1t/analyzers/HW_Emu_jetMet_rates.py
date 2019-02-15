@@ -1,9 +1,11 @@
 """
 Study the MET distibutions and various PUS schemes
 """
-from __future__ import division
+from __future__ import division, print_function
 import numpy as np
+import pandas as pd
 import ROOT
+from tabulate import tabulate
 import os
 from cmsl1t.analyzers.BaseAnalyzer import BaseAnalyzer
 from cmsl1t.plotting.rates import RatesPlot
@@ -92,11 +94,10 @@ class Analyzer(BaseAnalyzer):
                         'Error: Please specify thresholds in the config .yaml in dictionary format')
 
             rates_plot = getattr(self, name + "_rates")
-            rates_plot.build(name, puBins, 200, 0, 200, ETA_RANGES.get(name))
+            rates_plot.build("L1 " + name, puBins, 200, 0, 200, ETA_RANGES.get(name))
 
             rate_vs_pileup_plot = getattr(self, name + "_rate_vs_pileup")
-            rate_vs_pileup_plot.build(
-                "L1 " + name, trig_thresholds, 16, 0, 80, ETA_RANGES.get(name))
+            rate_vs_pileup_plot.build("L1 " + name, trig_thresholds, 16, 0, 80, ETA_RANGES.get(name))
 
         '''
         self.rates = HistogramsByPileUpCollection(
@@ -288,6 +289,37 @@ class Analyzer(BaseAnalyzer):
             plot(h, histo_name, self.output_folder)
         '''
         return True
+
+    def finalize(self):
+        self.__print_histogram_statistics()
+        return True
+
+    def __print_histogram_statistics(self):
+        all_stats = {}
+        for plot in self.all_plots:
+            # different hist collection will have different stats formats!
+            collection_type = type(plot).__name__
+            if collection_type not in all_stats:
+                all_stats[collection_type] = []
+
+            summary_label = 'PU'
+            summary_bins = self.puBins
+            if collection_type == 'RatesPlot':
+                summary_label = 'bin'
+                for var, thresholds in self.thresholds.items():
+                    if "L1 " + var in plot.online_title:
+                        summary_bins = thresholds
+            all_stats[collection_type] += [plot.get_stats(summary_label=summary_label, summary_bins=summary_bins)]
+
+        for collection_type in all_stats:
+            df = pd.concat(all_stats[collection_type], sort=False)
+            df.sort_values(by=['identifier'], inplace=True)
+            df.fillna('------', inplace=True)
+            print('Histogram collection:', collection_type)
+            print(tabulate(df, headers='keys', tablefmt='psql', showindex=False))
+            df_output = os.path.join(self.output_folder, '{}_histogram_stats.csv'.format(collection_type))
+            df.to_csv(df_output)
+            print('Saved histogram statistics to', df_output)
 
 
 def plot(hist, name, output_folder):

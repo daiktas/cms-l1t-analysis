@@ -1,0 +1,722 @@
+version: vvv0.5.1
+content:
+  l1CaloTowerEmuTree/L1CaloTowerTree:
+    name: L1CaloTowerTree
+    optional: false
+    branches:
+      CaloTP.ecalTPCaliphi:
+        aliases:
+        - event.emu_CaloTP_ecalTPCaliphi
+      CaloTP.ecalTPcompEt:
+        aliases:
+        - event.emu_CaloTP_ecalTPcompEt
+      CaloTP.ecalTPet:
+        aliases:
+        - event.emu_CaloTP_ecalTPet
+      CaloTP.ecalTPfineGrain:
+        aliases:
+        - event.emu_CaloTP_ecalTPfineGrain
+      CaloTP.ecalTPieta:
+        aliases:
+        - event.emu_CaloTP_ecalTPieta
+      CaloTP.ecalTPiphi:
+        aliases:
+        - event.emu_CaloTP_ecalTPiphi
+      CaloTP.hcalTPCaliphi:
+        aliases:
+        - event.emu_CaloTP_hcalTPCaliphi
+      CaloTP.hcalTPcompEt:
+        aliases:
+        - event.emu_CaloTP_hcalTPcompEt
+      CaloTP.hcalTPet:
+        aliases:
+        - event.emu_CaloTP_hcalTPet
+      CaloTP.hcalTPfineGrain:
+        aliases:
+        - event.emu_CaloTP_hcalTPfineGrain
+      CaloTP.hcalTPieta:
+        aliases:
+        - event.emu_CaloTP_hcalTPieta
+      CaloTP.hcalTPiphi:
+        aliases:
+        - event.emu_CaloTP_hcalTPiphi
+      CaloTP.nECALTP:
+        aliases:
+        - event.emu_CaloTP_nECALTP
+      CaloTP.nHCALTP:
+        aliases:
+        - event.emu_CaloTP_nHCALTP
+      L1CaloCluster.et:
+        aliases:
+        - event.emu_L1CaloCluster_et
+      L1CaloCluster.eta:
+        aliases:
+        - event.emu_L1CaloCluster_eta
+      L1CaloCluster.iet:
+        aliases:
+        - event.emu_L1CaloCluster_iet
+      L1CaloCluster.ieta:
+        aliases:
+        - event.emu_L1CaloCluster_ieta
+      L1CaloCluster.iphi:
+        aliases:
+        - event.emu_L1CaloCluster_iphi
+      L1CaloCluster.iqual:
+        aliases:
+        - event.emu_L1CaloCluster_iqual
+      L1CaloCluster.nCluster:
+        aliases:
+        - event.emu_L1CaloCluster_nCluster
+      L1CaloCluster.phi:
+        aliases:
+        - event.emu_L1CaloCluster_phi
+      L1CaloTower.et:
+        aliases:
+        - event.emu_L1CaloTower_et
+      L1CaloTower.eta:
+        aliases:
+        - event.emu_L1CaloTower_eta
+      L1CaloTower.iem:
+        aliases:
+        - event.emu_L1CaloTower_iem
+      L1CaloTower.iet:
+        aliases:
+        - event.emu_L1CaloTower_iet
+      L1CaloTower.ieta:
+        aliases:
+        - event.emu_L1CaloTower_ieta
+      L1CaloTower.ihad:
+        aliases:
+        - event.emu_L1CaloTower_ihad
+      L1CaloTower.iphi:
+        aliases:
+        - event.emu_L1CaloTower_iphi
+      L1CaloTower.iqual:
+        aliases:
+        - event.emu_L1CaloTower_iqual
+      L1CaloTower.iratio:
+        aliases:
+        - event.emu_L1CaloTower_iratio
+      L1CaloTower.nTower:
+        aliases:
+        - event.emu_L1CaloTower_nTower
+      L1CaloTower.phi:
+        aliases:
+        - event.emu_L1CaloTower_phi
+  l1CaloTowerTree/L1CaloTowerTree:
+    name: L1CaloTowerTree
+    optional: false
+    branches:
+      CaloTP.ecalTPCaliphi:
+        aliases:
+        - event.CaloTP_ecalTPCaliphi
+      CaloTP.ecalTPcompEt:
+        aliases:
+        - event.CaloTP_ecalTPcompEt
+      CaloTP.ecalTPet:
+        aliases:
+        - event.CaloTP_ecalTPet
+      CaloTP.ecalTPfineGrain:
+        aliases:
+        - event.CaloTP_ecalTPfineGrain
+      CaloTP.ecalTPieta:
+        aliases:
+        - event.CaloTP_ecalTPieta
+      CaloTP.ecalTPiphi:
+        aliases:
+        - event.CaloTP_ecalTPiphi
+      CaloTP.hcalTPCaliphi:
+        aliases:
+        - event.CaloTP_hcalTPCaliphi
+      CaloTP.hcalTPcompEt:
+        aliases:
+        - event.CaloTP_hcalTPcompEt
+      CaloTP.hcalTPet:
+        aliases:
+        - event.CaloTP_hcalTPet
+      CaloTP.hcalTPfineGrain:
+        aliases:
+        - event.CaloTP_hcalTPfineGrain
+      CaloTP.hcalTPieta:
+        aliases:
+        - event.CaloTP_hcalTPieta
+      CaloTP.hcalTPiphi:
+        aliases:
+        - event.CaloTP_hcalTPiphi
+      CaloTP.nECALTP:
+        aliases:
+        - event.CaloTP_nECALTP
+      CaloTP.nHCALTP:
+        aliases:
+        - event.CaloTP_nHCALTP
+      L1CaloTower.et:
+        aliases:
+        - event.L1CaloTower_et
+      L1CaloTower.eta:
+        aliases:
+        - event.L1CaloTower_eta
+      L1CaloTower.iem:
+        aliases:
+        - event.L1CaloTower_iem
+      L1CaloTower.iet:
+        aliases:
+        - event.L1CaloTower_iet
+      L1CaloTower.ieta:
+        aliases:
+        - event.L1CaloTower_ieta
+      L1CaloTower.ihad:
+        aliases:
+        - event.L1CaloTower_ihad
+      L1CaloTower.iphi:
+        aliases:
+        - event.L1CaloTower_iphi
+      L1CaloTower.iqual:
+        aliases:
+        - event.L1CaloTower_iqual
+      L1CaloTower.iratio:
+        aliases:
+        - event.L1CaloTower_iratio
+      L1CaloTower.nTower:
+        aliases:
+        - event.L1CaloTower_nTower
+      L1CaloTower.phi:
+        aliases:
+        - event.L1CaloTower_phi
+  l1EventTree/L1EventTree:
+    name: L1EventTree
+    optional: false
+    branches:
+      Event.bx:
+        aliases:
+        - event.bx
+      Event.event:
+        aliases:
+        - event.event
+      Event.hlt:
+        aliases:
+        - event.hlt
+      Event.lumi:
+        aliases:
+        - event.lumi
+      Event.nPV:
+        aliases:
+        - event.nPV
+      Event.nPV_True:
+        aliases:
+        - event.nPV_True
+      Event.orbit:
+        aliases:
+        - event.orbit
+      Event.puWeight:
+        aliases:
+        - event.puWeight
+      Event.run:
+        aliases:
+        - event.run
+      Event.time:
+        aliases:
+        - event.time
+  l1UpgradeEmuTree/L1UpgradeTree:
+    name: L1UpgradeTree
+    optional: false
+    branches:
+      L1Upgrade.egBx:
+        aliases:
+        - event.emu_L1Upgrade_egBx
+      L1Upgrade.egEt:
+        aliases:
+        - event.emu_L1Upgrade_egEt
+      L1Upgrade.egEta:
+        aliases:
+        - event.emu_L1Upgrade_egEta
+      L1Upgrade.egFootprintEt:
+        aliases:
+        - event.emu_L1Upgrade_egFootprintEt
+      L1Upgrade.egHwQual:
+        aliases:
+        - event.emu_L1Upgrade_egHwQual
+      L1Upgrade.egIEt:
+        aliases:
+        - event.emu_L1Upgrade_egIEt
+      L1Upgrade.egIEta:
+        aliases:
+        - event.emu_L1Upgrade_egIEta
+      L1Upgrade.egIPhi:
+        aliases:
+        - event.emu_L1Upgrade_egIPhi
+      L1Upgrade.egIso:
+        aliases:
+        - event.emu_L1Upgrade_egIso
+      L1Upgrade.egIsoEt:
+        aliases:
+        - event.emu_L1Upgrade_egIsoEt
+      L1Upgrade.egNTT:
+        aliases:
+        - event.emu_L1Upgrade_egNTT
+      L1Upgrade.egPhi:
+        aliases:
+        - event.emu_L1Upgrade_egPhi
+      L1Upgrade.egRawEt:
+        aliases:
+        - event.emu_L1Upgrade_egRawEt
+      L1Upgrade.egShape:
+        aliases:
+        - event.emu_L1Upgrade_egShape
+      L1Upgrade.egTowerHoE:
+        aliases:
+        - event.emu_L1Upgrade_egTowerHoE
+      L1Upgrade.egTowerIEta:
+        aliases:
+        - event.emu_L1Upgrade_egTowerIEta
+      L1Upgrade.egTowerIPhi:
+        aliases:
+        - event.emu_L1Upgrade_egTowerIPhi
+      L1Upgrade.jetBx:
+        aliases:
+        - event.emu_L1Upgrade_jetBx
+      L1Upgrade.jetEt:
+        aliases:
+        - event.emu_L1Upgrade_jetEt
+      L1Upgrade.jetEta:
+        aliases:
+        - event.emu_L1Upgrade_jetEta
+      L1Upgrade.jetIEt:
+        aliases:
+        - event.emu_L1Upgrade_jetIEt
+      L1Upgrade.jetIEta:
+        aliases:
+        - event.emu_L1Upgrade_jetIEta
+      L1Upgrade.jetIPhi:
+        aliases:
+        - event.emu_L1Upgrade_jetIPhi
+      L1Upgrade.jetPUDonutEt0:
+        aliases:
+        - event.emu_L1Upgrade_jetPUDonutEt0
+      L1Upgrade.jetPUDonutEt1:
+        aliases:
+        - event.emu_L1Upgrade_jetPUDonutEt1
+      L1Upgrade.jetPUDonutEt2:
+        aliases:
+        - event.emu_L1Upgrade_jetPUDonutEt2
+      L1Upgrade.jetPUDonutEt3:
+        aliases:
+        - event.emu_L1Upgrade_jetPUDonutEt3
+      L1Upgrade.jetPUEt:
+        aliases:
+        - event.emu_L1Upgrade_jetPUEt
+      L1Upgrade.jetPhi:
+        aliases:
+        - event.emu_L1Upgrade_jetPhi
+      L1Upgrade.jetRawEt:
+        aliases:
+        - event.emu_L1Upgrade_jetRawEt
+      L1Upgrade.jetSeedEt:
+        aliases:
+        - event.emu_L1Upgrade_jetSeedEt
+      L1Upgrade.jetTowerIEta:
+        aliases:
+        - event.emu_L1Upgrade_jetTowerIEta
+      L1Upgrade.jetTowerIPhi:
+        aliases:
+        - event.emu_L1Upgrade_jetTowerIPhi
+      L1Upgrade.muonBx:
+        aliases:
+        - event.emu_L1Upgrade_muonBx
+      L1Upgrade.muonChg:
+        aliases:
+        - event.emu_L1Upgrade_muonChg
+      L1Upgrade.muonEt:
+        aliases:
+        - event.emu_L1Upgrade_muonEt
+      L1Upgrade.muonEta:
+        aliases:
+        - event.emu_L1Upgrade_muonEta
+      L1Upgrade.muonEtaAtVtx:
+        aliases:
+        - event.emu_L1Upgrade_muonEtaAtVtx
+      L1Upgrade.muonIDEta:
+        aliases:
+        - event.emu_L1Upgrade_muonIDEta
+      L1Upgrade.muonIDPhi:
+        aliases:
+        - event.emu_L1Upgrade_muonIDPhi
+      L1Upgrade.muonIEt:
+        aliases:
+        - event.emu_L1Upgrade_muonIEt
+      L1Upgrade.muonIEta:
+        aliases:
+        - event.emu_L1Upgrade_muonIEta
+      L1Upgrade.muonIEtaAtVtx:
+        aliases:
+        - event.emu_L1Upgrade_muonIEtaAtVtx
+      L1Upgrade.muonIPhi:
+        aliases:
+        - event.emu_L1Upgrade_muonIPhi
+      L1Upgrade.muonIPhiAtVtx:
+        aliases:
+        - event.emu_L1Upgrade_muonIPhiAtVtx
+      L1Upgrade.muonIso:
+        aliases:
+        - event.emu_L1Upgrade_muonIso
+      L1Upgrade.muonPhi:
+        aliases:
+        - event.emu_L1Upgrade_muonPhi
+      L1Upgrade.muonPhiAtVtx:
+        aliases:
+        - event.emu_L1Upgrade_muonPhiAtVtx
+      L1Upgrade.muonQual:
+        aliases:
+        - event.emu_L1Upgrade_muonQual
+      L1Upgrade.muonTfMuonIdx:
+        aliases:
+        - event.emu_L1Upgrade_muonTfMuonIdx
+      L1Upgrade.nEGs:
+        aliases:
+        - event.emu_L1Upgrade_nEGs
+      L1Upgrade.nJets:
+        aliases:
+        - event.emu_L1Upgrade_nJets
+      L1Upgrade.nMuons:
+        aliases:
+        - event.emu_L1Upgrade_nMuons
+      L1Upgrade.nSums:
+        aliases:
+        - event.emu_L1Upgrade_nSums
+      L1Upgrade.nTaus:
+        aliases:
+        - event.emu_L1Upgrade_nTaus
+      L1Upgrade.sumBx:
+        aliases:
+        - event.emu_L1Upgrade_sumBx
+      L1Upgrade.sumEt:
+        aliases:
+        - event.emu_L1Upgrade_sumEt
+      L1Upgrade.sumIEt:
+        aliases:
+        - event.emu_L1Upgrade_sumIEt
+      L1Upgrade.sumIPhi:
+        aliases:
+        - event.emu_L1Upgrade_sumIPhi
+      L1Upgrade.sumPhi:
+        aliases:
+        - event.emu_L1Upgrade_sumPhi
+      L1Upgrade.sumType:
+        aliases:
+        - event.emu_L1Upgrade_sumType
+      L1Upgrade.tauBx:
+        aliases:
+        - event.emu_L1Upgrade_tauBx
+      L1Upgrade.tauEt:
+        aliases:
+        - event.emu_L1Upgrade_tauEt
+      L1Upgrade.tauEta:
+        aliases:
+        - event.emu_L1Upgrade_tauEta
+      L1Upgrade.tauHasEM:
+        aliases:
+        - event.emu_L1Upgrade_tauHasEM
+      L1Upgrade.tauHwQual:
+        aliases:
+        - event.emu_L1Upgrade_tauHwQual
+      L1Upgrade.tauIEt:
+        aliases:
+        - event.emu_L1Upgrade_tauIEt
+      L1Upgrade.tauIEta:
+        aliases:
+        - event.emu_L1Upgrade_tauIEta
+      L1Upgrade.tauIPhi:
+        aliases:
+        - event.emu_L1Upgrade_tauIPhi
+      L1Upgrade.tauIsMerged:
+        aliases:
+        - event.emu_L1Upgrade_tauIsMerged
+      L1Upgrade.tauIso:
+        aliases:
+        - event.emu_L1Upgrade_tauIso
+      L1Upgrade.tauIsoEt:
+        aliases:
+        - event.emu_L1Upgrade_tauIsoEt
+      L1Upgrade.tauNTT:
+        aliases:
+        - event.emu_L1Upgrade_tauNTT
+      L1Upgrade.tauPhi:
+        aliases:
+        - event.emu_L1Upgrade_tauPhi
+      L1Upgrade.tauRawEt:
+        aliases:
+        - event.emu_L1Upgrade_tauRawEt
+      L1Upgrade.tauTowerIEta:
+        aliases:
+        - event.emu_L1Upgrade_tauTowerIEta
+      L1Upgrade.tauTowerIPhi:
+        aliases:
+        - event.emu_L1Upgrade_tauTowerIPhi
+  l1UpgradeTree/L1UpgradeTree:
+    name: L1UpgradeTree
+    optional: false
+    branches:
+      L1Upgrade.egBx:
+        aliases:
+        - event.L1Upgrade_egBx
+      L1Upgrade.egEt:
+        aliases:
+        - event.L1Upgrade_egEt
+      L1Upgrade.egEta:
+        aliases:
+        - event.L1Upgrade_egEta
+      L1Upgrade.egFootprintEt:
+        aliases:
+        - event.L1Upgrade_egFootprintEt
+      L1Upgrade.egHwQual:
+        aliases:
+        - event.L1Upgrade_egHwQual
+      L1Upgrade.egIEt:
+        aliases:
+        - event.L1Upgrade_egIEt
+      L1Upgrade.egIEta:
+        aliases:
+        - event.L1Upgrade_egIEta
+      L1Upgrade.egIPhi:
+        aliases:
+        - event.L1Upgrade_egIPhi
+      L1Upgrade.egIso:
+        aliases:
+        - event.L1Upgrade_egIso
+      L1Upgrade.egIsoEt:
+        aliases:
+        - event.L1Upgrade_egIsoEt
+      L1Upgrade.egNTT:
+        aliases:
+        - event.L1Upgrade_egNTT
+      L1Upgrade.egPhi:
+        aliases:
+        - event.L1Upgrade_egPhi
+      L1Upgrade.egRawEt:
+        aliases:
+        - event.L1Upgrade_egRawEt
+      L1Upgrade.egShape:
+        aliases:
+        - event.L1Upgrade_egShape
+      L1Upgrade.egTowerHoE:
+        aliases:
+        - event.L1Upgrade_egTowerHoE
+      L1Upgrade.egTowerIEta:
+        aliases:
+        - event.L1Upgrade_egTowerIEta
+      L1Upgrade.egTowerIPhi:
+        aliases:
+        - event.L1Upgrade_egTowerIPhi
+      L1Upgrade.jetBx:
+        aliases:
+        - event.L1Upgrade_jetBx
+      L1Upgrade.jetEt:
+        aliases:
+        - event.L1Upgrade_jetEt
+      L1Upgrade.jetEta:
+        aliases:
+        - event.L1Upgrade_jetEta
+      L1Upgrade.jetIEt:
+        aliases:
+        - event.L1Upgrade_jetIEt
+      L1Upgrade.jetIEta:
+        aliases:
+        - event.L1Upgrade_jetIEta
+      L1Upgrade.jetIPhi:
+        aliases:
+        - event.L1Upgrade_jetIPhi
+      L1Upgrade.jetPUDonutEt0:
+        aliases:
+        - event.L1Upgrade_jetPUDonutEt0
+      L1Upgrade.jetPUDonutEt1:
+        aliases:
+        - event.L1Upgrade_jetPUDonutEt1
+      L1Upgrade.jetPUDonutEt2:
+        aliases:
+        - event.L1Upgrade_jetPUDonutEt2
+      L1Upgrade.jetPUDonutEt3:
+        aliases:
+        - event.L1Upgrade_jetPUDonutEt3
+      L1Upgrade.jetPUEt:
+        aliases:
+        - event.L1Upgrade_jetPUEt
+      L1Upgrade.jetPhi:
+        aliases:
+        - event.L1Upgrade_jetPhi
+      L1Upgrade.jetRawEt:
+        aliases:
+        - event.L1Upgrade_jetRawEt
+      L1Upgrade.jetSeedEt:
+        aliases:
+        - event.L1Upgrade_jetSeedEt
+      L1Upgrade.jetTowerIEta:
+        aliases:
+        - event.L1Upgrade_jetTowerIEta
+      L1Upgrade.jetTowerIPhi:
+        aliases:
+        - event.L1Upgrade_jetTowerIPhi
+      L1Upgrade.muonBx:
+        aliases:
+        - event.L1Upgrade_muonBx
+      L1Upgrade.muonChg:
+        aliases:
+        - event.L1Upgrade_muonChg
+      L1Upgrade.muonEt:
+        aliases:
+        - event.L1Upgrade_muonEt
+      L1Upgrade.muonEta:
+        aliases:
+        - event.L1Upgrade_muonEta
+      L1Upgrade.muonEtaAtVtx:
+        aliases:
+        - event.L1Upgrade_muonEtaAtVtx
+      L1Upgrade.muonIDEta:
+        aliases:
+        - event.L1Upgrade_muonIDEta
+      L1Upgrade.muonIDPhi:
+        aliases:
+        - event.L1Upgrade_muonIDPhi
+      L1Upgrade.muonIEt:
+        aliases:
+        - event.L1Upgrade_muonIEt
+      L1Upgrade.muonIEta:
+        aliases:
+        - event.L1Upgrade_muonIEta
+      L1Upgrade.muonIEtaAtVtx:
+        aliases:
+        - event.L1Upgrade_muonIEtaAtVtx
+      L1Upgrade.muonIPhi:
+        aliases:
+        - event.L1Upgrade_muonIPhi
+      L1Upgrade.muonIPhiAtVtx:
+        aliases:
+        - event.L1Upgrade_muonIPhiAtVtx
+      L1Upgrade.muonIso:
+        aliases:
+        - event.L1Upgrade_muonIso
+      L1Upgrade.muonPhi:
+        aliases:
+        - event.L1Upgrade_muonPhi
+      L1Upgrade.muonPhiAtVtx:
+        aliases:
+        - event.L1Upgrade_muonPhiAtVtx
+      L1Upgrade.muonQual:
+        aliases:
+        - event.L1Upgrade_muonQual
+      L1Upgrade.muonTfMuonIdx:
+        aliases:
+        - event.L1Upgrade_muonTfMuonIdx
+      L1Upgrade.nEGs:
+        aliases:
+        - event.L1Upgrade_nEGs
+      L1Upgrade.nJets:
+        aliases:
+        - event.L1Upgrade_nJets
+      L1Upgrade.nMuons:
+        aliases:
+        - event.L1Upgrade_nMuons
+      L1Upgrade.nSums:
+        aliases:
+        - event.L1Upgrade_nSums
+      L1Upgrade.nTaus:
+        aliases:
+        - event.L1Upgrade_nTaus
+      L1Upgrade.sumBx:
+        aliases:
+        - event.L1Upgrade_sumBx
+      L1Upgrade.sumEt:
+        aliases:
+        - event.L1Upgrade_sumEt
+      L1Upgrade.sumIEt:
+        aliases:
+        - event.L1Upgrade_sumIEt
+      L1Upgrade.sumIPhi:
+        aliases:
+        - event.L1Upgrade_sumIPhi
+      L1Upgrade.sumPhi:
+        aliases:
+        - event.L1Upgrade_sumPhi
+      L1Upgrade.sumType:
+        aliases:
+        - event.L1Upgrade_sumType
+      L1Upgrade.tauBx:
+        aliases:
+        - event.L1Upgrade_tauBx
+      L1Upgrade.tauEt:
+        aliases:
+        - event.L1Upgrade_tauEt
+      L1Upgrade.tauEta:
+        aliases:
+        - event.L1Upgrade_tauEta
+      L1Upgrade.tauHasEM:
+        aliases:
+        - event.L1Upgrade_tauHasEM
+      L1Upgrade.tauHwQual:
+        aliases:
+        - event.L1Upgrade_tauHwQual
+      L1Upgrade.tauIEt:
+        aliases:
+        - event.L1Upgrade_tauIEt
+      L1Upgrade.tauIEta:
+        aliases:
+        - event.L1Upgrade_tauIEta
+      L1Upgrade.tauIPhi:
+        aliases:
+        - event.L1Upgrade_tauIPhi
+      L1Upgrade.tauIsMerged:
+        aliases:
+        - event.L1Upgrade_tauIsMerged
+      L1Upgrade.tauIso:
+        aliases:
+        - event.L1Upgrade_tauIso
+      L1Upgrade.tauIsoEt:
+        aliases:
+        - event.L1Upgrade_tauIsoEt
+      L1Upgrade.tauNTT:
+        aliases:
+        - event.L1Upgrade_tauNTT
+      L1Upgrade.tauPhi:
+        aliases:
+        - event.L1Upgrade_tauPhi
+      L1Upgrade.tauRawEt:
+        aliases:
+        - event.L1Upgrade_tauRawEt
+      L1Upgrade.tauTowerIEta:
+        aliases:
+        - event.L1Upgrade_tauTowerIEta
+      L1Upgrade.tauTowerIPhi:
+        aliases:
+        - event.L1Upgrade_tauTowerIPhi
+  l1uGTTree/L1uGTTree:
+    name: L1uGTTree
+    optional: false
+    branches:
+      L1uGT.m_algoDecisionFinal:
+        aliases:
+        - event.L1uGT_m_algoDecisionFinal
+      L1uGT.m_algoDecisionInitial:
+        aliases:
+        - event.L1uGT_m_algoDecisionInitial
+      L1uGT.m_algoDecisionPreScaled:
+        aliases:
+        - event.L1uGT_m_algoDecisionPreScaled
+      L1uGT.m_bxInEvent:
+        aliases:
+        - event.m_bxInEvent
+      L1uGT.m_bxNr:
+        aliases:
+        - event.L1uGT_m_bxNr
+      L1uGT.m_finalOR:
+        aliases:
+        - event.L1uGT_m_finalOR
+      L1uGT.m_finalORPreVeto:
+        aliases:
+        - event.L1uGT_m_finalORPreVeto
+      L1uGT.m_finalORVeto:
+        aliases:
+        - event.L1uGT_m_finalORVeto
+      L1uGT.m_orbitNr:
+        aliases:
+        - event.L1uGT_m_orbitNr
+      L1uGT.m_preScColumn:
+        aliases:
+        - event.L1uGT_m_preScColumn

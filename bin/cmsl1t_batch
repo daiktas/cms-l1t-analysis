@@ -13,6 +13,8 @@ from cmsl1t.batch import Batch, condor_submit, lsf_submit
 from cmsl1t.batch import prepare_output_folders, get_config_name_template
 
 from cmsl1t.batch import create_run_script, create_info_file, prepare_jobs
+from cmsl1t.utils.module import load_L1TNTupleLibrary
+load_L1TNTupleLibrary()
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -68,6 +70,18 @@ def run(config_file, debug, batch, files_per_job):
     To check their status run
 
       cmsl1t_batch_status -i {1}""".format(batch_dir, info_file)))
+
+    # Finally dump the commands needed to run the next steps to screen:
+    next_steps = """
+    when all jobs are done, you can combine all results together with:
+
+        cmsl1t -c {cfg} -r --hist-files '{outdir}/*.root'
+
+    ie. use the same config file given here, but reload hists from the intermediate root files.
+    """
+
+    logger.info(next_steps.format(cfg=config_file.name,
+                                  outdir=outdir.format(index="*")))
 
 
 if __name__ == '__main__':

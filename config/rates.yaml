@@ -15,7 +15,8 @@ input:
     title: Zero Bias
   pileup_file: ""
   run_number:
-  lumi_json: "https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions17/13TeV/PromptReco/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
+  lumi_json: "https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions18/13TeV/PromptReco/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt"
+  ntuple_map_file: config/ntuple_content_RAWEMU.yaml
 
 analysis:
   load_trees:
