@@ -3,9 +3,8 @@ name: 2018 Data
 
 input:
   files:
-    # - data/L1Ntuple_*.root
-    - /eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/vcepaiti/SingleMuon/crab_SingleMuon_Run2018B_PromptReco_v1/180807_133043/0000/L1Ntuple_35*.root
-    - /eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/vcepaiti/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/crab_WJetsToLNu_RunIISpring18DR_PU40to70_upgrade2018_realistic_v10-v1_AODRAWEMUGEN/190213_120848/0000/L1Ntuple_2*.root
+    - /eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/vcepaiti/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/crab_WJetsToLNu_RunIISpring18DR_PU40to70_upgrade2018_realistic_v10-v1_AODRAWEMUGEN/190213_120848/0000/*.root
+    - /eos/cms/store/group/dpg_trigger/comm_trigger/L1Trigger/vcepaiti/SingleMuon/crab_SingleMuon_Run2018B_PromptReco_v1/180807_133043/0000/L1Ntuple_2*.root
      #- test/data/2k.root
      #- test/data/2kmu.root
 
@@ -16,7 +15,8 @@ input:
     name: SingleMu
     title: Single Muon
   pileup_file: ""
-  run_number: 276243
+  run_number: ""
+  ntuple_map_file: config/ntuple_content_AODRAWEMU.yaml
 
 analysis:
   load_trees:
