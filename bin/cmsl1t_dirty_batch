@@ -30,7 +30,7 @@ class cmsl1t_batch_job_htcondor(object):
     def __init__(self, batch_directory, debug):
         self.debug = debug
         setup_script = os.path.join(
-            os.environ["PROJECT_ROOT"], "bin", "env.sh")
+            os.environ["PROJECT_ROOT"], "setup.sh")
 
         run_script_contents = dedent("""\
         #! /bin/bash
@@ -86,7 +86,7 @@ class cmsl1t_batch_job_bsub(object):
         self.batch_directory = batch_directory
         self.debug = debug
         setup_script = os.path.join(
-            os.environ["PROJECT_ROOT"], "bin", "env.sh")
+            os.environ["PROJECT_ROOT"], "setup.sh")
 
         run_script_contents = dedent("""\
         #! /bin/bash

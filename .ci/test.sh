@@ -2,7 +2,7 @@
 set -e
 export PATH=~/.local/bin:$PATH
 
-source bin/env.sh
+source setup.sh
 make setup
 ls -l build
 

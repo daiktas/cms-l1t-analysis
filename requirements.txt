@@ -19,3 +19,5 @@ pytest>=3.5.0
 uproot
 mock
 requests
+plumbum
+six

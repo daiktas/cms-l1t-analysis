@@ -4,7 +4,7 @@ from os import path
 import sys
 import logging
 
-__version__ = 'vvv0.5.1'
+__version__ = '0.5.1'
 
 # logging
 logger = logging.getLogger(__name__)
@@ -24,7 +24,7 @@ logger.addHandler(ch)
 
 if 'PROJECT_ROOT' not in os.environ:
     logger.warn("Could not find environmental variable 'PROJECT_ROOT'")
-    logger.warn("You should to run 'source bin/env.sh' first!")
+    logger.warn("You should to run 'source setup.sh' first!")
     HERE = path.dirname(path.abspath(__file__))
     PROJECT_ROOT = path.abspath(path.join(HERE, path.pardir))
 else:

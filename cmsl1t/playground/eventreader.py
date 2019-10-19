@@ -206,15 +206,15 @@ class Event(object):
             filters and ET orders the jet collection
         '''
         goodJets = None
-        if jetType is "calo":
+        if jetType == "calo":
             goodJets = filter(jetFilter, self._caloJets)
             sorted_jets = sorted(
                 goodJets, key=lambda jet: jet.etCorr, reverse=True)
-        if jetType is "pf":
+        if jetType == "pf":
             goodJets = filter(jetFilter, self._pfJets)
             sorted_jets = sorted(
                 goodJets, key=lambda jet: jet.etCorr, reverse=True)
-        if jetType is "gen":
+        if jetType == "gen":
             goodJets = filter(jetFilter, self._genJets)
             sorted_jets = sorted(
                 goodJets, key=lambda jet: jet.etCorr, reverse=True)

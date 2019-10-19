@@ -179,7 +179,7 @@ def label_canvas(sample_title=None, run=None, isData=False):
     latex.SetNDC()
     latex.SetTextFont(42)
 
-    cms = "#bf{CMS} #it{Preliminary}"
+    cms = "#bf{CMS} #it{Preliminary}    2018D Data    6.2 fb^{-1}"
     if sample_title:
         cms += sample_title
     latex.DrawLatex(0.17, 0.92, cms)

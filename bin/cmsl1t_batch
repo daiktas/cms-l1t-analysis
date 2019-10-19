@@ -11,7 +11,6 @@ import logging
 from cmsl1t.config import ConfigParser
 from cmsl1t.batch import Batch, condor_submit, lsf_submit
 from cmsl1t.batch import prepare_output_folders, get_config_name_template
-
 from cmsl1t.batch import create_run_script, create_info_file, prepare_jobs
 from cmsl1t.utils.module import load_L1TNTupleLibrary
 load_L1TNTupleLibrary()
@@ -27,6 +26,7 @@ click_log.basic_config(logger)
 @click.option('--batch', default=Batch.condor, type=click.Choice([Batch.lsf, Batch.condor]),
               help='Select the job submission system to use')
 def run(config_file, debug, batch, files_per_job):
+    load_L1TNTupleLibrary()
     if batch == Batch.lsf:
         logger.warn('Legacy LSF system is no longer supported for cmsl1t.')
         logger.warn(
@@ -48,7 +48,7 @@ def run(config_file, debug, batch, files_per_job):
         config, batch_filename, outdir, files_per_job)
 
     project_root = os.environ["PROJECT_ROOT"]
-    setup_script = os.path.join(project_root, "bin", "env.sh")
+    setup_script = os.path.join(project_root,"setup.sh")
     run_script = create_run_script(setup_script, project_root, batch_dir)
     # submit jobs
     submit = condor_submit

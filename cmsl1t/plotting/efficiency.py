@@ -166,7 +166,7 @@ class EfficiencyPlot(BasePlotter):
             hists.append(hist)
 
             label = label_template.format(
-                online_title=self.online_title,
+                online_title='L1 MET HF PUS On',
                 threshold=self.thresholds.bins[threshold],
             )
             labels.append(label)
@@ -184,7 +184,7 @@ class EfficiencyPlot(BasePlotter):
             hists.append(hist)
 
             label = label_template.format(
-                online_title=emu_plotter.online_title + ' Emu',
+                online_title='L1 MET HF PUS Off',
                 threshold=emu_plotter.thresholds.bins[threshold],
             )
             labels.append(label)
@@ -242,7 +242,7 @@ class EfficiencyPlot(BasePlotter):
             xmax = hists[0].GetTotalHistogram().GetBinLowEdge(hists[0].GetTotalHistogram().GetNbinsX() + 1)
 
             # Draw each efficiency (with fit)
-            draw_args = {"xtitle": self.offline_title, "ytitle": "Efficiency", "xlimits": [xmin, xmax]}
+            draw_args = {"xtitle": self.offline_title, "ytitle": "Efficiency", "xlimits": [50, 300]}
 
             canvas = draw(hists, draw_args=draw_args)
             if len(fits) > 0:
@@ -257,9 +257,9 @@ class EfficiencyPlot(BasePlotter):
             legend = Legend(
                 len(hists),
                 header=self.legend_title,
-                topmargin=0.35,
-                rightmargin=0.3,
-                leftmargin=0.7,
+                topmargin=0.4,
+                rightmargin=0.31,
+                leftmargin=0.69,
                 textsize=0.025,
                 entryheight=0.028,
             )
@@ -271,13 +271,13 @@ class EfficiencyPlot(BasePlotter):
             legend.Draw()
 
             for val in [0.25, 0.5, 0.75, 0.95, 1.]:
-                line = ROOT.TLine(xmin, val, xmax, val)
+                line = ROOT.TLine(50, val, 300, val)
                 line.SetLineStyle("dashed")
                 line.SetLineColor(15)
                 line.Draw()
 
-            for thresh in self.thresholds.bins:
-                line = ROOT.TLine(thresh, 0., thresh, 1.)
+            for t in xrange(60,300,20):
+                line = ROOT.TLine(t, 0., t, 1.)
                 line.SetLineStyle("dashed")
                 line.SetLineColor(15)
                 line.Draw()

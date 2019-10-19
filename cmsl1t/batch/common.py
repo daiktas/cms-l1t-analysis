@@ -1,4 +1,4 @@
-from itertools import izip
+import six
 import math
 import logging
 import os
@@ -73,7 +73,9 @@ def _get_run_script(setup_script, project_root, shared_fs=True):
         '#!/usr/bin/env bash',
         'pushd {project_root}',
         'source {setup_script}',
-        'popd',
+        'echo == start ENV ==',
+        'env',
+        'echo == END ENV ==',
         'cmsl1t -c "$1"',
         '',
     ]
@@ -123,7 +125,7 @@ def prepare_output_folders(output_folder):
 def prepare_jobs(config, batch_filename_template, outdir, files_per_job):
     job_generator = _prepare_jobs(
         config, batch_filename_template, outdir, files_per_job)
-    job_configs, job_ids, output_folders = izip(*job_generator)
+    job_configs, job_ids, output_folders = six.moves.zip(*job_generator)
     return job_configs, job_ids, output_folders
 
 

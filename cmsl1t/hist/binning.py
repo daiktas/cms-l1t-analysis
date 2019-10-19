@@ -56,7 +56,7 @@ class Base():
 
     def get_bin_contents(self, bin_index):
         contents = self.values.get(bin_index, "DoesntExist")
-        if contents is "DoesntExist":
+        if contents == "DoesntExist":
             msg = "Cannot find bin for index, {0}, for binning called '{1}'"
             logger.error(msg.format(bin_index, self.label))
             raise KeyError(bin_index)

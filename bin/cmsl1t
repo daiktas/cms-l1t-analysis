@@ -42,8 +42,8 @@ def process_tuples(config, nevents, analyzers, producers):
     else:
         logger.info(input_files)
 
-    ntuple_map_file = config.try_get('input', 'ntuple_map_file', 'config/ntuple_content.yaml')
-    with open(ntuple_map_file) as f:
+    ntuple_map = config.get('input', 'ntuple_map_file')
+    with open(ntuple_map) as f:
         ntuple_map = yaml.load(f)
     load_L1TNTupleLibrary()
     reader = EventReader(input_files, ntuple_map, nevents=nevents)
@@ -114,10 +114,11 @@ def run(config, nevents, reload_histograms):
     results = [False]
     # Fetch the analyzer
     analyzers = config.get('analysis', 'analyzers')
-    analyzers = [load_analyzer(analyzer) for analyzer in analyzers]
+    out_cfg = config.get('output')
+    analyzers = [load_analyzer(analyzer, out_cfg) for analyzer in analyzers]
 
     producers = config.get('analysis', 'producers')
-    producers = [load_producer(producer) for producer in producers]
+    producers = [load_producer(producer, out_cfg) for producer in producers]
     _check_producer_outputs(producers)
 
     if not reload_histograms:
@@ -190,22 +191,32 @@ def analyze(config_file, nevents, reload_histograms, hist_files):
         logger.info('\n' + separator + '\n')
 
 
-def load_analyzer(analyzer):
+def load_analyzer(analyzer, output_cfg):
     name = analyzer['name']
     module = analyzer.pop('module')
     logger.info("Try loading analyzer: {0} ({1})".format(name, module))
     module = import_module(module)
     logger.info("Successfully loaded analyzer: {0} ({1})".format(name, module))
-    return module.Analyzer(**analyzer)
+    cfg = dict(output_folder=output_cfg['folder'],
+               plots_folder=output_cfg['plots_folder'],
+               file_format=output_cfg.get('plot_format', 'pdf'),
+               )
+    cfg.update(analyzer)
+    return module.Analyzer(**cfg)
 
 
-def load_producer(producer):
+def load_producer(producer, output_cfg):
     name = producer.pop('name')
     module = producer.pop('module')
     logger.info("Try loading producer: {0} ({1})".format(name, module))
     module = import_module(module)
     logger.info("Successfully loaded producer: {0} ({1})".format(name, module))
-    return module.Producer(**producer)
+    cfg = dict(output_folder=output_cfg['folder'],
+               plots_folder=output_cfg['plots_folder'],
+               file_format=output_cfg.get('plot_format', 'pdf'),
+               )
+    cfg.update(producer)
+    return module.Producer(**cfg)
 
 
 if __name__ == '__main__':

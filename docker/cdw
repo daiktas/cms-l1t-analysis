@@ -14,6 +14,6 @@ resize_term() {
 
 cd /code
 export NO_CVMFS=1
-source bin/env.sh
+source setup.sh
 resize_term
 bash

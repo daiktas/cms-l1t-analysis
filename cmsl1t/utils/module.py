@@ -2,6 +2,7 @@ from importlib import import_module
 import os
 import logging
 import sys
+from .. import PROJECT_ROOT
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +31,9 @@ def exists(module_name):
 
 def load_L1TNTupleLibrary(lib_name='L1TAnalysisDataformats.so'):
     import ROOT
-    PROJECT_ROOT = os.environ.get('PROJECT_ROOT', os.getcwd())
+    external_includes = os.path.join(PROJECT_ROOT, 'external')
+    if external_includes not in ROOT.gSystem.GetIncludePath():
+        ROOT.gSystem.AddIncludePath('-I"{}"'.format(external_includes))
     if lib_name not in ROOT.gSystem.GetLibraries():
         path_to_lib = os.path.join(PROJECT_ROOT, 'build', lib_name)
         ROOT.gSystem.Load(path_to_lib)

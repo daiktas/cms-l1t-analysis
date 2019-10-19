@@ -181,7 +181,7 @@ def get_symmetric_formula():
 
 
 def get_asymmetric_formula():
-    """
+    r"""
     Fit with an exponentially modified Gaussian (EMG)
     From Wikipedia ( https://en.wikipedia.org/wiki/Exponentially_modified_Gaussian_distribution ) the CDF of an EMG is:
     CDF = \Phi (u,0,v)-e^{-u+v^{2}/2+\log(\Phi (u,v^{2},v))}}

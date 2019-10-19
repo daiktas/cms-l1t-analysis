@@ -15,7 +15,7 @@ def load_ROOT_library(library, lib_path='build'):
     if os.path.exists(path_to_lib):
         try:
             ROOT.gSystem.Load(path_to_lib)
-        except ROOTError, e:
+        except ROOTError as e:
             msg = 'Could not load {0}: {1}'.format(path_to_lib, e)
             logger.error(msg)
     else:

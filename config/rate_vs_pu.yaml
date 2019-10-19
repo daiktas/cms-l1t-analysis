@@ -1,0 +1,87 @@
+version: 0.0.1
+name: 'Jet Met Rates'
+
+input:
+  files:
+      # Zero Bias
+       -  root://eoscms.cern.ch//eos/cms//store/group/dpg_trigger/comm_trigger/L1Trigger/bundocka/ZeroBias/zbMETa/181212_124635/0000/L1Ntuple_*.root
+       -  root://eoscms.cern.ch//eos/cms//store/group/dpg_trigger/comm_trigger/L1Trigger/bundocka/ZeroBias/zbMETb/181212_124704/0000/L1Ntuple_*.root
+       -  root://eoscms.cern.ch//eos/cms//store/group/dpg_trigger/comm_trigger/L1Trigger/bundocka/ZeroBias/zbMETc/181212_124734/0000/L1Ntuple_*.root
+       -  root://eoscms.cern.ch//eos/cms//store/group/dpg_trigger/comm_trigger/L1Trigger/bundocka/ZeroBias/zbMETd/181212_124803/0000/L1Ntuple_*.root
+       -  root://eoscms.cern.ch//eos/cms//store/group/dpg_trigger/comm_trigger/L1Trigger/bundocka/ZeroBias/zbMETe/181212_124839/0000/L1Ntuple_*.root
+  sample:
+    name: Data
+    title: 2018 Data
+  trigger:
+    name: zbMET
+    title: Zero Bias
+  pileup_file: ""
+  run_number:
+  lumi_json: "https://cms-service-dqm.web.cern.ch/cms-service-dqm/CAF/certification/Collisions18/13TeV/PromptReco/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt"
+  ntuple_map_file: config/ntuple_content_RAWEMU.yaml
+
+analysis:
+  load_trees:
+    - event
+    - emuCaloTowers
+    - emuUpgrade
+    - upgrade
+  do_fit: True
+  pu_type: 0PU24,25PU49,50PU
+  pu_bins: [0,25,50,999]
+  thresholds:
+    HT:       [120, 200, 320]
+    METBE:    [80, 120]
+    METHF:    [80, 120]
+    JetET_BE: [35, 90, 120]
+    JetET_HF: [35, 90, 120]
+
+  analyzers:
+     HW_Emu_jetMet_rates:
+       module: cmsl1t.analyzers.HW_Emu_jetMet_rates
+  producers:
+    l1Sums:
+      module: cmsl1t.producers.l1sums
+      inputs:
+        - L1Upgrade_sumBx
+        - L1Upgrade_sumType
+        - L1Upgrade_sumEt
+        - L1Upgrade_sumPhi
+      outputs:
+        - l1Sums
+    l1EmuSums:
+      module: cmsl1t.producers.l1sums
+      inputs:
+        - emu_L1Upgrade_sumBx
+        - emu_L1Upgrade_sumType
+        - emu_L1Upgrade_sumEt
+        - emu_L1Upgrade_sumPhi
+      outputs:
+        - l1EmuSums
+    l1Jets:
+      module: cmsl1t.producers.jets
+      inputs:
+        - L1Upgrade_jetEt
+        - L1Upgrade_jetEta
+        - L1Upgrade_jetPhi
+        - L1Upgrade_jetBx
+      jetType: L1
+      filter: null
+      outputs:
+        - l1Jets
+    l1EmuJets:
+      module: cmsl1t.producers.jets
+      inputs:
+        - emu_L1Upgrade_jetEt
+        - emu_L1Upgrade_jetEta
+        - emu_L1Upgrade_jetPhi
+        - emu_L1Upgrade_jetBx
+      jetType: L1
+      filter: null
+      outputs:
+        - l1EmuJets
+
+output:
+  template:
+     - output/zb_rates
+     - "{date}_{sample_name}_{trigger_name}"

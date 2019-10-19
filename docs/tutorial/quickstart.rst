@@ -17,7 +17,7 @@ For now let's use this repository, you can fork your own of course!
 
   git clone -b weekly-checks https://github.com/professor-calculus/cms-l1t-analysis.git
   cd cms-l1t-analysis
-  source bin/env.sh
+  source setup.sh
   # you might need your grid cert -- but you shouldn't need it on lxplus with NTuples on EOS
   voms-proxy-init --voms cms
   make setup

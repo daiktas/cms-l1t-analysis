@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 class HistCollectionView(object):
+
     def __init__(self, bin_indices, hist_list):
         self.histograms = hist_list
         self.bin_indices = bin_indices
@@ -67,23 +68,23 @@ class HistogramCollection(object):
 
     def _prepare_collection(self, dimensions, histogram_factory,
                             bin_indices=[], depth=0):
-            this_dim = deepcopy(dimensions[0])
-            remaining_dims = dimensions[1:]
-            for bin in this_dim.iter_all():
-                if remaining_dims:
-                    value = self._prepare_collection(remaining_dims,
-                                                     histogram_factory,
-                                                     bin_indices + [bin],
-                                                     depth + 1)
-                    this_dim.set_value(bin, value)
-                else:
-                    indices = bin_indices + [bin]
-                    labels = {d.label: index for d, index in
-                              zip(self.__dimensions, indices)}
-                    # TODO: Should fill proper bin labels here and pass through
-                    hist = histogram_factory(labels=labels)
-                    this_dim.set_value(bin, hist)
-            return this_dim
+        this_dim = deepcopy(dimensions[0])
+        remaining_dims = dimensions[1:]
+        for bin in this_dim.iter_all():
+            if remaining_dims:
+                value = self._prepare_collection(remaining_dims,
+                                                 histogram_factory,
+                                                 bin_indices + [bin],
+                                                 depth + 1)
+                this_dim.set_value(bin, value)
+            else:
+                indices = bin_indices + [bin]
+                labels = {d.label: index for d, index in
+                          zip(self.__dimensions, indices)}
+                # TODO: Should fill proper bin labels here and pass through
+                hist = histogram_factory(labels=labels)
+                this_dim.set_value(bin, hist)
+        return this_dim
 
     @classmethod
     def _flatten_bins(self, bins):

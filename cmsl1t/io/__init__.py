@@ -9,9 +9,8 @@ def to_root(obj, output_file):
     '''
         Saves the obj into a ROOT file
     '''
-    if isinstance(output_file, str) \
-       and not output_file.endswith('.root'):
-            output_file += '.root'
+    if isinstance(output_file, str) and not output_file.endswith('.root'):
+        output_file += '.root'
     dump(obj, output_file)
 
 

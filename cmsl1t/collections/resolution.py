@@ -32,7 +32,7 @@ class ResolutionCollection(HistogramsByPileUpCollection):
 
     def __init__(self, pileupBins=[0, 13, 20, 999],
                  regions=geo.eta_regions):
-        '''
+        r'''
 
             :param dict regions: A dictionary of region_name: <function>.
                 The function should take 1 value, \eta, and return a boolean.

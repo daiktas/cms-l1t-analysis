@@ -70,19 +70,21 @@ class RateVsPileupPlot(BasePlotter):
 
     def overlay_with_emu(self, emu_plotter, with_fits=False):
 
+        hists = []
+        labels = []
+        fits = []
+        thresholds = []
+
         for (threshold, ), hist in self.plots.flat_items_all():
-            hists = []
-            labels = []
-            fits = []
-            thresholds = []
             if not isinstance(threshold, int):
                 continue
             label_template = '{online_title} > {threshold} GeV'
             label = label_template.format(
-                online_title=self.online_title,
+                online_title='L1 MET HF PUS On',
                 threshold=self.thresholds.bins[threshold],
             )
             hist.Divide(self.plots.get_bin_contents([bn.Base.everything]))
+            hist.Scale(2855)
             hist.drawstyle = "EP"
             hist.SetMarkerSize(0.5)
             hist.SetMarkerColor(1)
@@ -96,10 +98,11 @@ class RateVsPileupPlot(BasePlotter):
                 if emu_threshold == threshold:
                     label_template = '{online_title} > {threshold} GeV'
                     emu_label = label_template.format(
-                        online_title=emu_plotter.online_title,
+                        online_title='L1 MET HF PUS Off',
                         threshold=emu_plotter.thresholds.bins[threshold],
                     )
                     emu_hist.Divide(emu_plotter.plots.get_bin_contents([bn.Base.everything]))
+                    emu_hist.Scale(2855)
                     emu_hist.drawstyle = "EP"
                     emu_hist.SetMarkerSize(0.5)
                     emu_hist.SetMarkerColor(2)
@@ -110,14 +113,14 @@ class RateVsPileupPlot(BasePlotter):
                     labels.append(emu_label)
                     thresholds.append(emu_threshold)
 
-            self.__make_overlay(hists, fits, labels, thresholds)
+        self.__make_overlay(hists, fits, labels, thresholds)
 
     def __make_overlay(self, hists, fits, labels, thresholds, suffix=""):
         with preserve_current_style():
             # Draw each rate vs pileup (with fit)
-            xtitle = "# reco vertices"
-            ytitle = "a.u."
-            canvas = draw(hists, draw_args={"xtitle": xtitle, "ytitle": ytitle})
+            xtitle = "< \\mu >"
+            ytitle = "Rate (kHz)"
+            canvas = draw(hists, draw_args={"xtitle": xtitle, "ytitle": ytitle, "xlimits": (20, 50), "ylimits": (0, 5)})
             if fits:
                 for fit, hist in zip(fits, hists):
                     fit["asymmetric"].linecolor = hist.GetLineColor()
@@ -130,16 +133,18 @@ class RateVsPileupPlot(BasePlotter):
             legend = Legend(
                 len(hists),
                 header=self.legend_title,
-                topmargin=0.35,
-                rightmargin=0.7,
-                leftmargin=0.3,
+                topmargin=0.02,
+                leftmargin=0.22,
+                rightmargin=0.78,
                 textsize=0.025,
                 entryheight=0.028,
             )
-            for hist, label in zip(hists, labels):
-                legend.AddEntry(hist, label)
-                legend.SetBorderSize(0)
-                legend.Draw()
+            legend.AddEntry(hists[1], labels[1])
+            legend.AddEntry(hists[0], labels[0])
+            legend.AddEntry(hists[3], labels[3])
+            legend.AddEntry(hists[2], labels[2])
+            legend.SetBorderSize(0)
+            legend.Draw()
 
             # Save canvas to file
             name = self.filename_format.format(threshold=thresholds[0])

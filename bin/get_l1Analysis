@@ -60,7 +60,7 @@ for header in output_files:
     header = header.replace('external/', '')
     content.append('#include "{0}"'.format(header))
 
-ETSUM_HEADER = """
+ETSUM_HEADER = b"""
 #ifndef DataFormats_L1Trigger_ETSum_h
 #define DataFormats_L1Trigger_ETSum_h
 

@@ -7,7 +7,8 @@ location = 'external/L1Trigger/L1TNtuples/interface'
 combined_header = os.path.join(location, 'L1AnalysisAllDataformats.h')
 
 # add 'external' folder to include path
-gROOT.ProcessLine(".include external")
+project_root = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+gROOT.ProcessLine(".include {}".format(os.path.join(project_root, "external")))
 
 # k : keep the shared library after the session end.
 # f : force recompilation.
@@ -18,4 +19,4 @@ gROOT.ProcessLine(".include external")
 # v : output all information output
 # d : debug ACLiC, keep all the output files.
 # - : if buildir is set, use a flat structure (see buildir below)
-gSystem.CompileMacro(combined_header, 'kOcs', 'build/L1TAnalysisDataformats')
+gSystem.CompileMacro(combined_header, 'kOcf', 'build/L1TAnalysisDataformats')

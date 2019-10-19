@@ -74,7 +74,7 @@ def job_summary(series, max_width=80):
 @click.option('-s', '--summary', help='print summary', default=False, is_flag=True)
 @click_log.simple_verbosity_option(logger)
 def run(info_file, summary):
-    df = pd.read_csv(info_file)
+    df = pd.read_csv(info_file, dtype={"batch_id": str})
 
     df['status'] = df.apply(update_job_status, axis=1)
     # make backup file
